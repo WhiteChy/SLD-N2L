@@ -1,0 +1,3485 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="OlaWod">
+
+    <title>Demo Page</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="css/clean-blog.css" rel="stylesheet">
+	
+	<link rel="stylesheet" href="./css/fontawesome.all.min.css">
+	
+	<script defer src="./js/fontawesome.all.min.js"></script>
+	<!-- Bootstrap core JavaScript -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+	<!-- Custom scripts for this template -->
+	<script src="js/clean-blog.js"></script>
+	<script src="js/interp.js"></script>
+
+</head>
+
+<body id="page-top">
+
+	<nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+		<div class="container">
+			<a class="navbar-brand js-scroll-trigger" href="#page-top"></a>
+			<button class="navbar-toggler navbar-toggler-right font-weight-bold text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">Menu <i class="fas fa-bars"></i></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#abstract">Abstract</a>
+
+					<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#clean">clean speech</a></li>
+					<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#-8.5SSN">speech in SSN noise (-8.5) </a></li>
+					<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#-8.5Babble">speech in Babble noise (-8.5) </a></li>
+
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url('img/home-bg.jpg')">
+        <div class="container" style="padding-bottom:10px">
+            <div class="row">
+                <div class="col-lg-10 col-md-10 mx-auto">
+                    <div class="site-heading">
+                        <h1>SLD-N2L</h1>
+                        <span class="subheading">
+                            SLD-N2L: A Speaker-Lombard-Disentangled Normal-to-Lombard Conversion
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+			
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-14 col-md-12 mx-auto">
+                <div class="post-preview" id="abstract">
+                    <h2 class="post-title">
+                        Abstract
+                    </h2>
+                    <p>
+                        The Normal-to-Lombard (N2L) conversion can effectively enhance speech intelligibility in noisy communication scenarios and serve as a data augmentation tool for various speech-related algorithms. However, current N2L methods typically rely solely on noise levels as the guiding label for Lombard style conversion and use general loss functions to approximate generated features to those of Lombard speech. In this paper, we propose a Speaker-Lombard-Disentangled N2L conversion model (SLD-N2L). We disentangle the speaker and Lombard effect by fine-tuning the speaker encoder. Then, we fuse Lombard embedding and speaker embedding to obtain speaker-aware Lombard embedding for accurate conversion. We also propose the Lombard loss that uses a parameter predictor to close the generated waveform and ground-truth waveform in Lombard-related parameters. Experimental results demonstrate that our proposed method significantly outperforms existing N2L models. Ablation study shows that proposed speaker-aware Lombard embedding and Lombard loss can improve both speech quality and intelligibility.
+
+					</p>
+                </div>
+
+                <div class="post-preview">
+                    <h2 class="post-title">
+                        Normal-to-Lombard Conversion
+                    </h2>
+                    <h3 class="post-meta" id="clean">
+                        clean speech (without noise)
+                    </h3>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Normal</th>
+                                <th scope="col">Lombard</th>
+                                <th scope="col">Conversion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            <tr>
+                                <td>F137_U050_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/clean/F137_U050_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>F137_U050_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/clean/F137_U050_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/clean/F137_U050_SSN40_1_C.wav">
+                                    </audio> 
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/clean/F137_U050_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/clean/F137_U050_SSN40_1_C.wav">
+                                    </audio> 
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/clean/F137_U050_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/clean/F137_U050_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>F137_U065_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/clean/F137_U065_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>F137_U065_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/clean/F137_U065_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/clean/F137_U065_SSN40_1_C.wav">
+                                    </audio> 
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/clean/F137_U065_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/clean/F137_U065_SSN40_1_C.wav">
+                                    </audio> 
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/clean/F137_U065_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/clean/F137_U065_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>F137_U076_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/clean/F137_U076_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>F137_U076_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/clean/F137_U076_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/clean/F137_U076_SSN40_1_C.wav">
+                                    </audio> 
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/clean/F137_U076_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/clean/F137_U076_SSN40_1_C.wav">
+                                    </audio> 
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/clean/F137_U076_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/clean/F137_U076_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>F137_U094_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/clean/F137_U094_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>F137_U094_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/clean/F137_U094_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/clean/F137_U094_SSN40_1_C.wav">
+                                    </audio> 
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/clean/F137_U094_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/clean/F137_U094_SSN40_1_C.wav">
+                                    </audio> 
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/clean/F137_U094_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/clean/F137_U094_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>F137_U100_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/clean/F137_U100_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>F137_U100_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/clean/F137_U100_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/clean/F137_U100_SSN40_1_C.wav">
+                                    </audio> 
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/clean/F137_U100_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/clean/F137_U100_SSN40_1_C.wav">
+                                    </audio> 
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/clean/F137_U100_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/clean/F137_U100_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>F137_U104_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/clean/F137_U104_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>F137_U104_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/clean/F137_U104_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/clean/F137_U104_SSN40_1_C.wav">
+                                    </audio> 
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/clean/F137_U104_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/clean/F137_U104_SSN40_1_C.wav">
+                                    </audio> 
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/clean/F137_U104_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/clean/F137_U104_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>F207_U007_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/clean/F207_U007_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>F207_U007_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/clean/F207_U007_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/clean/F207_U007_SSN40_1_C.wav">
+                                    </audio> 
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/clean/F207_U007_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/clean/F207_U007_SSN40_1_C.wav">
+                                    </audio> 
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/clean/F207_U007_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/clean/F207_U007_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>F207_U020_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/clean/F207_U020_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>F207_U020_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/clean/F207_U020_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/clean/F207_U020_SSN40_1_C.wav">
+                                    </audio> 
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/clean/F207_U020_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/clean/F207_U020_SSN40_1_C.wav">
+                                    </audio> 
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/clean/F207_U020_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/clean/F207_U020_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>F207_U052_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/clean/F207_U052_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>F207_U052_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/clean/F207_U052_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/clean/F207_U052_SSN40_1_C.wav">
+                                    </audio> 
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/clean/F207_U052_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/clean/F207_U052_SSN40_1_C.wav">
+                                    </audio> 
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/clean/F207_U052_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/clean/F207_U052_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>F207_U082_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/clean/F207_U082_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>F207_U082_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/clean/F207_U082_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/clean/F207_U082_SSN40_1_C.wav">
+                                    </audio> 
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/clean/F207_U082_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/clean/F207_U082_SSN40_1_C.wav">
+                                    </audio> 
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/clean/F207_U082_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/clean/F207_U082_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>F207_U084_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/clean/F207_U084_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>F207_U084_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/clean/F207_U084_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/clean/F207_U084_SSN40_1_C.wav">
+                                    </audio> 
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/clean/F207_U084_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/clean/F207_U084_SSN40_1_C.wav">
+                                    </audio> 
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/clean/F207_U084_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/clean/F207_U084_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>F207_U086_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/clean/F207_U086_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>F207_U086_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/clean/F207_U086_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/clean/F207_U086_SSN40_1_C.wav">
+                                    </audio> 
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/clean/F207_U086_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/clean/F207_U086_SSN40_1_C.wav">
+                                    </audio> 
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/clean/F207_U086_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/clean/F207_U086_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>M129_U039_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/clean/M129_U039_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>M129_U039_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/clean/M129_U039_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/clean/M129_U039_SSN40_1_C.wav">
+                                    </audio> 
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/clean/M129_U039_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/clean/M129_U039_SSN40_1_C.wav">
+                                    </audio> 
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/clean/M129_U039_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/clean/M129_U039_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>M129_U042_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/clean/M129_U042_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>M129_U042_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/clean/M129_U042_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/clean/M129_U042_SSN40_1_C.wav">
+                                    </audio> 
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/clean/M129_U042_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/clean/M129_U042_SSN40_1_C.wav">
+                                    </audio> 
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/clean/M129_U042_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/clean/M129_U042_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>M129_U049_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/clean/M129_U049_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>M129_U049_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/clean/M129_U049_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/clean/M129_U049_SSN40_1_C.wav">
+                                    </audio> 
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/clean/M129_U049_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/clean/M129_U049_SSN40_1_C.wav">
+                                    </audio> 
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/clean/M129_U049_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/clean/M129_U049_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>M129_U053_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/clean/M129_U053_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>M129_U053_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/clean/M129_U053_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/clean/M129_U053_SSN40_1_C.wav">
+                                    </audio> 
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/clean/M129_U053_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/clean/M129_U053_SSN40_1_C.wav">
+                                    </audio> 
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/clean/M129_U053_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/clean/M129_U053_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>M129_U056_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/clean/M129_U056_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>M129_U056_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/clean/M129_U056_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/clean/M129_U056_SSN40_1_C.wav">
+                                    </audio> 
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/clean/M129_U056_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/clean/M129_U056_SSN40_1_C.wav">
+                                    </audio> 
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/clean/M129_U056_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/clean/M129_U056_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>M129_U096_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/clean/M129_U096_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>M129_U096_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/clean/M129_U096_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/clean/M129_U096_SSN40_1_C.wav">
+                                    </audio> 
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/clean/M129_U096_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/clean/M129_U096_SSN40_1_C.wav">
+                                    </audio> 
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/clean/M129_U096_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/clean/M129_U096_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>M132_U023_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/clean/M132_U023_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>M132_U023_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/clean/M132_U023_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/clean/M132_U023_SSN40_1_C.wav">
+                                    </audio> 
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/clean/M132_U023_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/clean/M132_U023_SSN40_1_C.wav">
+                                    </audio> 
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/clean/M132_U023_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/clean/M132_U023_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>M132_U057_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/clean/M132_U057_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>M132_U057_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/clean/M132_U057_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/clean/M132_U057_SSN40_1_C.wav">
+                                    </audio> 
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/clean/M132_U057_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/clean/M132_U057_SSN40_1_C.wav">
+                                    </audio> 
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/clean/M132_U057_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/clean/M132_U057_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>M132_U070_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/clean/M132_U070_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>M132_U070_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/clean/M132_U070_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/clean/M132_U070_SSN40_1_C.wav">
+                                    </audio> 
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/clean/M132_U070_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/clean/M132_U070_SSN40_1_C.wav">
+                                    </audio> 
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/clean/M132_U070_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/clean/M132_U070_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>M132_U071_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/clean/M132_U071_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>M132_U071_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/clean/M132_U071_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/clean/M132_U071_SSN40_1_C.wav">
+                                    </audio> 
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/clean/M132_U071_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/clean/M132_U071_SSN40_1_C.wav">
+                                    </audio> 
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/clean/M132_U071_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/clean/M132_U071_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>M132_U078_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/clean/M132_U078_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>M132_U078_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/clean/M132_U078_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/clean/M132_U078_SSN40_1_C.wav">
+                                    </audio> 
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/clean/M132_U078_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/clean/M132_U078_SSN40_1_C.wav">
+                                    </audio> 
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/clean/M132_U078_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/clean/M132_U078_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>M132_U079_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/clean/M132_U079_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>M132_U079_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/clean/M132_U079_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/clean/M132_U079_SSN40_1_C.wav">
+                                    </audio> 
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/clean/M132_U079_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/clean/M132_U079_SSN40_1_C.wav">
+                                    </audio> 
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/clean/M132_U079_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/clean/M132_U079_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+					<hr>
+                </div>
+                <hr>
+				<div class="post-preview">
+
+                    <h3 class="post-meta" id="-8.5SSN">
+                        noisy speech with SSN (snr = -8.5)
+                    </h3>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Normal</th>
+                                <th scope="col">Lombard</th>
+                                <th scope="col">Conversion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            <tr>
+                                <td>F137_U050_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/-8.5SSN/F137_U050_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>F137_U050_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/-8.5SSN/F137_U050_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/-8.5SSN/F137_U050_SSN40_1_C.wav">
+                                    </audio>
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/-8.5SSN/F137_U050_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/-8.5SSN/F137_U050_SSN40_1_C.wav">
+                                    </audio>
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/-8.5SSN/F137_U050_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/-8.5SSN/F137_U050_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>F137_U065_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/-8.5SSN/F137_U065_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>F137_U065_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/-8.5SSN/F137_U065_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/-8.5SSN/F137_U065_SSN40_1_C.wav">
+                                    </audio>
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/-8.5SSN/F137_U065_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/-8.5SSN/F137_U065_SSN40_1_C.wav">
+                                    </audio>
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/-8.5SSN/F137_U065_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/-8.5SSN/F137_U065_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>F137_U076_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/-8.5SSN/F137_U076_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>F137_U076_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/-8.5SSN/F137_U076_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/-8.5SSN/F137_U076_SSN40_1_C.wav">
+                                    </audio>
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/-8.5SSN/F137_U076_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/-8.5SSN/F137_U076_SSN40_1_C.wav">
+                                    </audio>
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/-8.5SSN/F137_U076_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/-8.5SSN/F137_U076_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>F137_U094_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/-8.5SSN/F137_U094_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>F137_U094_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/-8.5SSN/F137_U094_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/-8.5SSN/F137_U094_SSN40_1_C.wav">
+                                    </audio>
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/-8.5SSN/F137_U094_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/-8.5SSN/F137_U094_SSN40_1_C.wav">
+                                    </audio>
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/-8.5SSN/F137_U094_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/-8.5SSN/F137_U094_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>F137_U100_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/-8.5SSN/F137_U100_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>F137_U100_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/-8.5SSN/F137_U100_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/-8.5SSN/F137_U100_SSN40_1_C.wav">
+                                    </audio>
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/-8.5SSN/F137_U100_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/-8.5SSN/F137_U100_SSN40_1_C.wav">
+                                    </audio>
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/-8.5SSN/F137_U100_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/-8.5SSN/F137_U100_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>F137_U104_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/-8.5SSN/F137_U104_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>F137_U104_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/-8.5SSN/F137_U104_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/-8.5SSN/F137_U104_SSN40_1_C.wav">
+                                    </audio>
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/-8.5SSN/F137_U104_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/-8.5SSN/F137_U104_SSN40_1_C.wav">
+                                    </audio>
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/-8.5SSN/F137_U104_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/-8.5SSN/F137_U104_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>F207_U007_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/-8.5SSN/F207_U007_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>F207_U007_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/-8.5SSN/F207_U007_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/-8.5SSN/F207_U007_SSN40_1_C.wav">
+                                    </audio>
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/-8.5SSN/F207_U007_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/-8.5SSN/F207_U007_SSN40_1_C.wav">
+                                    </audio>
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/-8.5SSN/F207_U007_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/-8.5SSN/F207_U007_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>F207_U020_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/-8.5SSN/F207_U020_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>F207_U020_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/-8.5SSN/F207_U020_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/-8.5SSN/F207_U020_SSN40_1_C.wav">
+                                    </audio>
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/-8.5SSN/F207_U020_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/-8.5SSN/F207_U020_SSN40_1_C.wav">
+                                    </audio>
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/-8.5SSN/F207_U020_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/-8.5SSN/F207_U020_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>F207_U052_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/-8.5SSN/F207_U052_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>F207_U052_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/-8.5SSN/F207_U052_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/-8.5SSN/F207_U052_SSN40_1_C.wav">
+                                    </audio>
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/-8.5SSN/F207_U052_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/-8.5SSN/F207_U052_SSN40_1_C.wav">
+                                    </audio>
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/-8.5SSN/F207_U052_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/-8.5SSN/F207_U052_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>F207_U082_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/-8.5SSN/F207_U082_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>F207_U082_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/-8.5SSN/F207_U082_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/-8.5SSN/F207_U082_SSN40_1_C.wav">
+                                    </audio>
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/-8.5SSN/F207_U082_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/-8.5SSN/F207_U082_SSN40_1_C.wav">
+                                    </audio>
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/-8.5SSN/F207_U082_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/-8.5SSN/F207_U082_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>F207_U084_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/-8.5SSN/F207_U084_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>F207_U084_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/-8.5SSN/F207_U084_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/-8.5SSN/F207_U084_SSN40_1_C.wav">
+                                    </audio>
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/-8.5SSN/F207_U084_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/-8.5SSN/F207_U084_SSN40_1_C.wav">
+                                    </audio>
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/-8.5SSN/F207_U084_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/-8.5SSN/F207_U084_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>F207_U086_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/-8.5SSN/F207_U086_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>F207_U086_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/-8.5SSN/F207_U086_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/-8.5SSN/F207_U086_SSN40_1_C.wav">
+                                    </audio>
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/-8.5SSN/F207_U086_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/-8.5SSN/F207_U086_SSN40_1_C.wav">
+                                    </audio>
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/-8.5SSN/F207_U086_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/-8.5SSN/F207_U086_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>M129_U039_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/-8.5SSN/M129_U039_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>M129_U039_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/-8.5SSN/M129_U039_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/-8.5SSN/M129_U039_SSN40_1_C.wav">
+                                    </audio>
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/-8.5SSN/M129_U039_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/-8.5SSN/M129_U039_SSN40_1_C.wav">
+                                    </audio>
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/-8.5SSN/M129_U039_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/-8.5SSN/M129_U039_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>M129_U042_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/-8.5SSN/M129_U042_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>M129_U042_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/-8.5SSN/M129_U042_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/-8.5SSN/M129_U042_SSN40_1_C.wav">
+                                    </audio>
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/-8.5SSN/M129_U042_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/-8.5SSN/M129_U042_SSN40_1_C.wav">
+                                    </audio>
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/-8.5SSN/M129_U042_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/-8.5SSN/M129_U042_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>M129_U049_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/-8.5SSN/M129_U049_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>M129_U049_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/-8.5SSN/M129_U049_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/-8.5SSN/M129_U049_SSN40_1_C.wav">
+                                    </audio>
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/-8.5SSN/M129_U049_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/-8.5SSN/M129_U049_SSN40_1_C.wav">
+                                    </audio>
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/-8.5SSN/M129_U049_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/-8.5SSN/M129_U049_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>M129_U053_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/-8.5SSN/M129_U053_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>M129_U053_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/-8.5SSN/M129_U053_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/-8.5SSN/M129_U053_SSN40_1_C.wav">
+                                    </audio>
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/-8.5SSN/M129_U053_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/-8.5SSN/M129_U053_SSN40_1_C.wav">
+                                    </audio>
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/-8.5SSN/M129_U053_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/-8.5SSN/M129_U053_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>M129_U056_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/-8.5SSN/M129_U056_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>M129_U056_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/-8.5SSN/M129_U056_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/-8.5SSN/M129_U056_SSN40_1_C.wav">
+                                    </audio>
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/-8.5SSN/M129_U056_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/-8.5SSN/M129_U056_SSN40_1_C.wav">
+                                    </audio>
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/-8.5SSN/M129_U056_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/-8.5SSN/M129_U056_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>M129_U096_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/-8.5SSN/M129_U096_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>M129_U096_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/-8.5SSN/M129_U096_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/-8.5SSN/M129_U096_SSN40_1_C.wav">
+                                    </audio>
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/-8.5SSN/M129_U096_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/-8.5SSN/M129_U096_SSN40_1_C.wav">
+                                    </audio>
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/-8.5SSN/M129_U096_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/-8.5SSN/M129_U096_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>M132_U023_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/-8.5SSN/M132_U023_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>M132_U023_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/-8.5SSN/M132_U023_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/-8.5SSN/M132_U023_SSN40_1_C.wav">
+                                    </audio>
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/-8.5SSN/M132_U023_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/-8.5SSN/M132_U023_SSN40_1_C.wav">
+                                    </audio>
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/-8.5SSN/M132_U023_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/-8.5SSN/M132_U023_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>M132_U057_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/-8.5SSN/M132_U057_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>M132_U057_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/-8.5SSN/M132_U057_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/-8.5SSN/M132_U057_SSN40_1_C.wav">
+                                    </audio>
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/-8.5SSN/M132_U057_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/-8.5SSN/M132_U057_SSN40_1_C.wav">
+                                    </audio>
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/-8.5SSN/M132_U057_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/-8.5SSN/M132_U057_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>M132_U070_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/-8.5SSN/M132_U070_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>M132_U070_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/-8.5SSN/M132_U070_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/-8.5SSN/M132_U070_SSN40_1_C.wav">
+                                    </audio>
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/-8.5SSN/M132_U070_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/-8.5SSN/M132_U070_SSN40_1_C.wav">
+                                    </audio>
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/-8.5SSN/M132_U070_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/-8.5SSN/M132_U070_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>M132_U071_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/-8.5SSN/M132_U071_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>M132_U071_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/-8.5SSN/M132_U071_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/-8.5SSN/M132_U071_SSN40_1_C.wav">
+                                    </audio>
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/-8.5SSN/M132_U071_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/-8.5SSN/M132_U071_SSN40_1_C.wav">
+                                    </audio>
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/-8.5SSN/M132_U071_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/-8.5SSN/M132_U071_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>M132_U078_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/-8.5SSN/M132_U078_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>M132_U078_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/-8.5SSN/M132_U078_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/-8.5SSN/M132_U078_SSN40_1_C.wav">
+                                    </audio>
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/-8.5SSN/M132_U078_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/-8.5SSN/M132_U078_SSN40_1_C.wav">
+                                    </audio>
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/-8.5SSN/M132_U078_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/-8.5SSN/M132_U078_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>M132_U079_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/-8.5SSN/M132_U079_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>M132_U079_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/-8.5SSN/M132_U079_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/-8.5SSN/M132_U079_SSN40_1_C.wav">
+                                    </audio>
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/-8.5SSN/M132_U079_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/-8.5SSN/M132_U079_SSN40_1_C.wav">
+                                    </audio>
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/-8.5SSN/M132_U079_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/-8.5SSN/M132_U079_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+					<hr>
+                </div>
+                <hr>
+            <div class="post-preview">
+
+
+
+                    <h3 class="post-meta" id="-8.5Babble">
+                        noisy speech with Babble noise (snr =-8.5)
+                    </h3>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Normal</th>
+                                <th scope="col">Lombard</th>
+                                <th scope="col">Conversion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            <tr>
+                                <td>F137_U050_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/-8.5Babble/F137_U050_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>F137_U050_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/-8.5Babble/F137_U050_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/-8.5Babble/F137_U050_SSN40_1_C.wav">
+                                    </audio>
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/-8.5Babble/F137_U050_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/-8.5Babble/F137_U050_SSN40_1_C.wav">
+                                    </audio>
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/-8.5Babble/F137_U050_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/-8.5Babble/F137_U050_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>F137_U065_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/-8.5Babble/F137_U065_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>F137_U065_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/-8.5Babble/F137_U065_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/-8.5Babble/F137_U065_SSN40_1_C.wav">
+                                    </audio>
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/-8.5Babble/F137_U065_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/-8.5Babble/F137_U065_SSN40_1_C.wav">
+                                    </audio>
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/-8.5Babble/F137_U065_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/-8.5Babble/F137_U065_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>F137_U076_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/-8.5Babble/F137_U076_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>F137_U076_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/-8.5Babble/F137_U076_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/-8.5Babble/F137_U076_SSN40_1_C.wav">
+                                    </audio>
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/-8.5Babble/F137_U076_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/-8.5Babble/F137_U076_SSN40_1_C.wav">
+                                    </audio>
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/-8.5Babble/F137_U076_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/-8.5Babble/F137_U076_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>F137_U094_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/-8.5Babble/F137_U094_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>F137_U094_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/-8.5Babble/F137_U094_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/-8.5Babble/F137_U094_SSN40_1_C.wav">
+                                    </audio>
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/-8.5Babble/F137_U094_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/-8.5Babble/F137_U094_SSN40_1_C.wav">
+                                    </audio>
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/-8.5Babble/F137_U094_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/-8.5Babble/F137_U094_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>F137_U100_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/-8.5Babble/F137_U100_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>F137_U100_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/-8.5Babble/F137_U100_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/-8.5Babble/F137_U100_SSN40_1_C.wav">
+                                    </audio>
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/-8.5Babble/F137_U100_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/-8.5Babble/F137_U100_SSN40_1_C.wav">
+                                    </audio>
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/-8.5Babble/F137_U100_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/-8.5Babble/F137_U100_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>F137_U104_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/-8.5Babble/F137_U104_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>F137_U104_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/-8.5Babble/F137_U104_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/-8.5Babble/F137_U104_SSN40_1_C.wav">
+                                    </audio>
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/-8.5Babble/F137_U104_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/-8.5Babble/F137_U104_SSN40_1_C.wav">
+                                    </audio>
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/-8.5Babble/F137_U104_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/-8.5Babble/F137_U104_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>F207_U007_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/-8.5Babble/F207_U007_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>F207_U007_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/-8.5Babble/F207_U007_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/-8.5Babble/F207_U007_SSN40_1_C.wav">
+                                    </audio>
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/-8.5Babble/F207_U007_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/-8.5Babble/F207_U007_SSN40_1_C.wav">
+                                    </audio>
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/-8.5Babble/F207_U007_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/-8.5Babble/F207_U007_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>F207_U020_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/-8.5Babble/F207_U020_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>F207_U020_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/-8.5Babble/F207_U020_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/-8.5Babble/F207_U020_SSN40_1_C.wav">
+                                    </audio>
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/-8.5Babble/F207_U020_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/-8.5Babble/F207_U020_SSN40_1_C.wav">
+                                    </audio>
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/-8.5Babble/F207_U020_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/-8.5Babble/F207_U020_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>F207_U052_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/-8.5Babble/F207_U052_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>F207_U052_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/-8.5Babble/F207_U052_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/-8.5Babble/F207_U052_SSN40_1_C.wav">
+                                    </audio>
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/-8.5Babble/F207_U052_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/-8.5Babble/F207_U052_SSN40_1_C.wav">
+                                    </audio>
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/-8.5Babble/F207_U052_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/-8.5Babble/F207_U052_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>F207_U082_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/-8.5Babble/F207_U082_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>F207_U082_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/-8.5Babble/F207_U082_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/-8.5Babble/F207_U082_SSN40_1_C.wav">
+                                    </audio>
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/-8.5Babble/F207_U082_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/-8.5Babble/F207_U082_SSN40_1_C.wav">
+                                    </audio>
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/-8.5Babble/F207_U082_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/-8.5Babble/F207_U082_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>F207_U084_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/-8.5Babble/F207_U084_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>F207_U084_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/-8.5Babble/F207_U084_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/-8.5Babble/F207_U084_SSN40_1_C.wav">
+                                    </audio>
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/-8.5Babble/F207_U084_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/-8.5Babble/F207_U084_SSN40_1_C.wav">
+                                    </audio>
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/-8.5Babble/F207_U084_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/-8.5Babble/F207_U084_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>F207_U086_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/-8.5Babble/F207_U086_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>F207_U086_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/-8.5Babble/F207_U086_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/-8.5Babble/F207_U086_SSN40_1_C.wav">
+                                    </audio>
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/-8.5Babble/F207_U086_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/-8.5Babble/F207_U086_SSN40_1_C.wav">
+                                    </audio>
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/-8.5Babble/F207_U086_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/-8.5Babble/F207_U086_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>M129_U039_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/-8.5Babble/M129_U039_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>M129_U039_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/-8.5Babble/M129_U039_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/-8.5Babble/M129_U039_SSN40_1_C.wav">
+                                    </audio>
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/-8.5Babble/M129_U039_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/-8.5Babble/M129_U039_SSN40_1_C.wav">
+                                    </audio>
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/-8.5Babble/M129_U039_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/-8.5Babble/M129_U039_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>M129_U042_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/-8.5Babble/M129_U042_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>M129_U042_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/-8.5Babble/M129_U042_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/-8.5Babble/M129_U042_SSN40_1_C.wav">
+                                    </audio>
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/-8.5Babble/M129_U042_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/-8.5Babble/M129_U042_SSN40_1_C.wav">
+                                    </audio>
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/-8.5Babble/M129_U042_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/-8.5Babble/M129_U042_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>M129_U049_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/-8.5Babble/M129_U049_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>M129_U049_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/-8.5Babble/M129_U049_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/-8.5Babble/M129_U049_SSN40_1_C.wav">
+                                    </audio>
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/-8.5Babble/M129_U049_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/-8.5Babble/M129_U049_SSN40_1_C.wav">
+                                    </audio>
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/-8.5Babble/M129_U049_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/-8.5Babble/M129_U049_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>M129_U053_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/-8.5Babble/M129_U053_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>M129_U053_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/-8.5Babble/M129_U053_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/-8.5Babble/M129_U053_SSN40_1_C.wav">
+                                    </audio>
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/-8.5Babble/M129_U053_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/-8.5Babble/M129_U053_SSN40_1_C.wav">
+                                    </audio>
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/-8.5Babble/M129_U053_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/-8.5Babble/M129_U053_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>M129_U056_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/-8.5Babble/M129_U056_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>M129_U056_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/-8.5Babble/M129_U056_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/-8.5Babble/M129_U056_SSN40_1_C.wav">
+                                    </audio>
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/-8.5Babble/M129_U056_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/-8.5Babble/M129_U056_SSN40_1_C.wav">
+                                    </audio>
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/-8.5Babble/M129_U056_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/-8.5Babble/M129_U056_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>M129_U096_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/-8.5Babble/M129_U096_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>M129_U096_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/-8.5Babble/M129_U096_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/-8.5Babble/M129_U096_SSN40_1_C.wav">
+                                    </audio>
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/-8.5Babble/M129_U096_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/-8.5Babble/M129_U096_SSN40_1_C.wav">
+                                    </audio>
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/-8.5Babble/M129_U096_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/-8.5Babble/M129_U096_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>M132_U023_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/-8.5Babble/M132_U023_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>M132_U023_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/-8.5Babble/M132_U023_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/-8.5Babble/M132_U023_SSN40_1_C.wav">
+                                    </audio>
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/-8.5Babble/M132_U023_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/-8.5Babble/M132_U023_SSN40_1_C.wav">
+                                    </audio>
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/-8.5Babble/M132_U023_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/-8.5Babble/M132_U023_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>M132_U057_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/-8.5Babble/M132_U057_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>M132_U057_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/-8.5Babble/M132_U057_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/-8.5Babble/M132_U057_SSN40_1_C.wav">
+                                    </audio>
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/-8.5Babble/M132_U057_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/-8.5Babble/M132_U057_SSN40_1_C.wav">
+                                    </audio>
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/-8.5Babble/M132_U057_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/-8.5Babble/M132_U057_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>M132_U070_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/-8.5Babble/M132_U070_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>M132_U070_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/-8.5Babble/M132_U070_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/-8.5Babble/M132_U070_SSN40_1_C.wav">
+                                    </audio>
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/-8.5Babble/M132_U070_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/-8.5Babble/M132_U070_SSN40_1_C.wav">
+                                    </audio>
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/-8.5Babble/M132_U070_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/-8.5Babble/M132_U070_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>M132_U071_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/-8.5Babble/M132_U071_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>M132_U071_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/-8.5Babble/M132_U071_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/-8.5Babble/M132_U071_SSN40_1_C.wav">
+                                    </audio>
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/-8.5Babble/M132_U071_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/-8.5Babble/M132_U071_SSN40_1_C.wav">
+                                    </audio>
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/-8.5Babble/M132_U071_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/-8.5Babble/M132_U071_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>M132_U078_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/-8.5Babble/M132_U078_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>M132_U078_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/-8.5Babble/M132_U078_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/-8.5Babble/M132_U078_SSN40_1_C.wav">
+                                    </audio>
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/-8.5Babble/M132_U078_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/-8.5Babble/M132_U078_SSN40_1_C.wav">
+                                    </audio>
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/-8.5Babble/M132_U078_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/-8.5Babble/M132_U078_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>M132_U079_SSN40_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/normal/-8.5Babble/M132_U079_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>M132_U079_SSN80_1_C
+                                    <audio controls preload="none">
+                                        <source src="data/default/-8.5Babble/M132_U079_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+									CycleGAN
+                                    <audio controls preload="none">
+                                        <source src="data/CycleGAN/-8.5Babble/M132_U079_SSN40_1_C.wav">
+                                    </audio>
+									StarGAN
+                                    <audio controls preload="none">
+                                        <source src="data/StarGAN/-8.5Babble/M132_U079_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+
+                                </td>
+                                <td>
+								    Freevc
+                                    <audio controls preload="none">
+                                        <source src="data/Freevc/-8.5Babble/M132_U079_SSN40_1_C.wav">
+                                    </audio>
+									DDDMVC
+                                    <audio controls preload="none">
+                                        <source src="data/DDDMVC/-8.5Babble/M132_U079_SSN40_1_C.wav">
+                                    </audio>
+                                </td>
+                                <td>
+								    SLD-N2L
+                                    <audio controls preload="none">
+                                        <source src="data/proposed/-8.5Babble/M132_U079_SSN40_1_C.wav">
+                                    </audio>
+
+
+
+                                </td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+					<hr>
+                </div>
+                <hr>
+
+
+
+
+
+
+
+
+
+
+
+
+				<hr>
+				
+            </div>
+        </div>
+		</div>
+
+
+</body>
+
+</html>

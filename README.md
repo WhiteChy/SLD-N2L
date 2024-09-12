@@ -9,4 +9,4 @@ The dataset is EMALG [https://github.com/ASP-WHU/EMALG]. The speaker ID in test 
 
 The metric ASR, UTMOS, F0CORR, subjective MOS can be found at PitchVC[https://github.com/OlaWod/PitchVC]
 
-Thanks to olawod[https://github.com/OlaWod]
+Thanks to [olawod](https://github.com/OlaWod)

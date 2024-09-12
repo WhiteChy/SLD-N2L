@@ -7,8 +7,9 @@ You can refer [Freevc](https://github.com/OlaWod/FreeVC) and [VITS-VC](https://g
 
 The dataset is [EMALG](https://github.com/ASP-WHU/EMALG). The speaker ID in test set is F137 F207 M129 M132.
 
-The metric ASR, UTMOS, F0CORR, subjective MOS can be found at [PitchVC](https://github.com/OlaWod/PitchVC).
+The metric ASR, UTMOS, subjective MOS can be found at [PitchVC](https://github.com/OlaWod/PitchVC).
 
+The software of subjective intelligibility test: ![intelligibility](data/intelligibility.png)
 
 Baselines are replicated by replacing the speaker embedding with Lombard embedding.
 

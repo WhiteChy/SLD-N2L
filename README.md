@@ -2,14 +2,11 @@
 [https://whitechy.github.io/SLD-N2L/](https://whitechy.github.io/SLD-N2L/)
 
 Due to corporation, I can't upload the code.
+---------------------------------------------------------------------------------------------------------------------------------
 
 You can refer [Freevc](https://github.com/OlaWod/FreeVC) and [VITS-VC](https://github.com/jaywalnut310/vits) to replicate this work.
-
 The dataset is [EMALG](https://github.com/ASP-WHU/EMALG). The speaker ID in test set is F137 F207 M129 M132.
-
 The metric ASR, UTMOS, subjective MOS can be found at [PitchVC](https://github.com/OlaWod/PitchVC).
-
-The software of subjective intelligibility test: ![intelligibility](data/intelligibility.png)
 
 Baselines are replicated by replacing the speaker embedding with Lombard embedding.
 
@@ -22,3 +19,7 @@ Baselines are replicated by replacing the speaker embedding with Lombard embeddi
 [DDDMVC](https://github.com/hayeong0/DDDM-VC)) (The poor quality may be due to the non-fine-tuned hubert and non-fine-tuned HifiGAN)
 
 Thanks to [OlaWod](https://github.com/OlaWod)!!!!!!
+
+The software of subjective intelligibility test: 
+
+![intelligibility](data/intelligibility.png)

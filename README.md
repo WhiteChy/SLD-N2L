@@ -9,7 +9,12 @@ The dataset is [EMALG](https://github.com/ASP-WHU/EMALG). The speaker ID in test
 
 The metric ASR, UTMOS, F0CORR, subjective MOS can be found at [PitchVC](https://github.com/OlaWod/PitchVC)
 
-The [StarGAN](https://github.com/thestarboy/StarGAN-Voice-Conversion-2), [CycleGAN](https://github.com/shreyas253/CycleGAN_1dCNN) (PML vocoder and official code show poor quality. I replicate CycleGAN using leimao version(https://github.com/leimao/Voice-Converter-CycleGAN)), Freevc, [DDDMVC](https://github.com/hayeong0/DDDM-VC) (The poor quality may be due to the non-fine-tuned hubert) are replicated by myself.
 
+Baselines are replicated by replacing the speaker embedding with Lombard embedding.
+
+([StarGAN](https://github.com/thestarboy/StarGAN-Voice-Conversion-2), 
+[CycleGAN](https://github.com/shreyas253/CycleGAN_1dCNN) (PML vocoder & model from official code show poor quality. I replicate CycleGAN using this version(https://github.com/leimao/Voice-Converter-CycleGAN)), 
+Freevc, 
+[DDDMVC](https://github.com/hayeong0/DDDM-VC)) (The poor quality may be due to the non-fine-tuned hubert and non-fine-tuned HifiGAN) )
 
 Thanks to [olawod](https://github.com/OlaWod)

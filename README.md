@@ -19,9 +19,9 @@ Baselines are replicated by replacing the speaker embedding with Lombard embeddi
 
 [Freevc](https://github.com/OlaWod/FreeVC)
 
-[DDDMVC](https://github.com/hayeong0/DDDM-VC)) (The poor quality may be due to the non-fine-tuned hubert and non-fine-tuned HifiGAN)
+[DDDMVC](https://github.com/hayeong0/DDDM-VC) (The poor quality may be due to the non-fine-tuned hubert and non-fine-tuned HifiGAN)
 
-Thanks to [OlaWod](https://github.com/OlaWod)!!!!!!!!!
+**Thanks to** [OlaWod](https://github.com/OlaWod)!!!!!!!!!
 
 The software of subjective intelligibility test: 
 

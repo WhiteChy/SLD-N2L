@@ -13,7 +13,7 @@ The metric ASR, UTMOS, subjective MOS can be found at [PitchVC](https://github.c
 
 Baselines are replicated by replacing the speaker embedding with Lombard embedding.
 
-[StarGAN](https://github.com/thestarboy/StarGAN-Voice-Conversion-2)
+[StarGAN](https://github.com/thestarboy/StarGAN-Voice-Conversion-2) (model architecture and hyperparameters are built based on [Speech_Intelligibility_Enhancement_Using_Non-Parallel_Speaking_Style_Conversion_With_Stargan_And_Dynamic_Range_Compression](https://ieeexplore.ieee.org/abstract/document/9102916/))
 
 [CycleGAN](https://github.com/shreyas253/CycleGAN_1dCNN) (PML vocoder & model from official code show poor quality. I replicate CycleGAN using this version(https://github.com/leimao/Voice-Converter-CycleGAN))
 
@@ -21,7 +21,7 @@ Baselines are replicated by replacing the speaker embedding with Lombard embeddi
 
 [DDDMVC](https://github.com/hayeong0/DDDM-VC)) (The poor quality may be due to the non-fine-tuned hubert and non-fine-tuned HifiGAN)
 
-Thanks to [OlaWod](https://github.com/OlaWod)!!!!!!
+Thanks to [OlaWod](https://github.com/OlaWod)!!!!!!!!!
 
 The software of subjective intelligibility test: 
 

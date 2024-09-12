@@ -4,7 +4,7 @@
 Due to corporation, I can't upload the code.
 
 ---------------------------------------------------------------------------------------------------------------------------------
-# some details
+# Some details
 
 You can refer [Freevc](https://github.com/OlaWod/FreeVC), [VITS-VC](https://github.com/jaywalnut310/vits) and the paper to replicate this work.
 

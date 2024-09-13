@@ -15,7 +15,7 @@ Baselines are replicated by replacing the speaker embedding with Lombard embeddi
 
 [StarGAN](https://github.com/thestarboy/StarGAN-Voice-Conversion-2) (model architecture and hyperparameters are built based on [Speech_Intelligibility_Enhancement_Using_Non-Parallel_Speaking_Style_Conversion_With_Stargan_And_Dynamic_Range_Compression](https://ieeexplore.ieee.org/abstract/document/9102916/))
 
-[CycleGAN](https://github.com/shreyas253/CycleGAN_1dCNN) (PML vocoder & model from official code show poor quality. I replicate CycleGAN using this version(https://github.com/leimao/Voice-Converter-CycleGAN))
+[CycleGAN](https://github.com/shreyas253/CycleGAN_1dCNN) (PML vocoder & model from official code show poor quality. I replicate CycleGAN using this version(https://github.com/leimao/Voice-Converter-CycleGAN), which has a higher speech quality.)
 
 [Freevc](https://github.com/OlaWod/FreeVC)
 
